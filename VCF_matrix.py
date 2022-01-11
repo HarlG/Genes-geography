@@ -7,4 +7,7 @@ panel_filename = "phase1_integrated_calls.20101123.ALL.panel"
 
 with VariantFile(vcf_filename) as vcf_reader:
     for record in vcf_reader:
-        print(record)
+        alleles = [record.samples[x].allele_indices for x in record.samples]
+        samples = [sample for sample in record.samples]
+        print(alleles)
+        print(sanples)
