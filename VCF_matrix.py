@@ -10,4 +10,4 @@ with VariantFile(vcf_filename) as vcf_reader:
         alleles = [record.samples[x].allele_indices for x in record.samples]
         samples = [sample for sample in record.samples]
         print(alleles)
-        print(sanples)
+        print(samples)
