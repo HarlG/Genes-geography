@@ -26,6 +26,7 @@ genotypes = np.array(genotypes)
 print(genotypes.shape)
 
 matrix = np.count_nonzero(genotypes, axis =2)
+matrix = matrix.T
 print(matrix.shape)
 
 pca = decomposition.PCA(n_components=2)
