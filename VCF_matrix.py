@@ -13,7 +13,7 @@ samples = []
 with VariantFile(vcf_filename) as vcf_reader:
     counter = 0
     for record in vcf_reader:
-        count +=1
+        counter +=1
         if counter % 100 == 0:
             alleles = [record.samples[x].allele_indices for x in record.samples]
             samples = [sample for sample in record.samples]
