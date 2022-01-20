@@ -23,7 +23,17 @@ with VariantFile(vcf_filename) as vcf_reader:
             variant_ids.append(record.id)
         if counter >= 10000:
             break
-        
+
+
+with open(panel_filename) as panel_file:
+    labels = {} #{sample_id: population code}
+    for line in panel_file:
+        line = line.strip().split('\t')
+        labels[line[0]] = line[1]
+
+
+
+
 genotypes = np.array(genotypes)
 print(genotypes.shape)
 
@@ -37,5 +47,6 @@ print(pca.singular_values_)
 to_plot = pca.transform(matrix)
 print(to_plot.shape)
 
-pd.DataFrame(matrix, columns = variant_ids, index = samples)
+df = pd.DataFrame(matrix, columns = variant_ids, index = samples)
+df['Population code'] = df.index.map(labels)
 df.to_csv("matrix.csv")
